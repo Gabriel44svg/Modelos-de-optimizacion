@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Método M-Grande - Poké-Optimizador</title>
+    <link rel="stylesheet" href="css/pokemon.css">
+</head>
+<body>
+
+<header class="poketop" style="background-color: #306567;"> <a href="index.html" style="color:white; text-decoration:none; float:left; font-size:20px;">&#8592; Menú</a>
+    <h1>Método de la M-Grande</h1>
+    <p class="sub">Resolución con Variables Artificiales (Restricciones = y &ge;)</p>
+</header>
+
+<div class="pokedex-screen">
+    <div style="text-align: center; margin-bottom: 20px;">
+        <img src="https://img.pokemondb.net/artwork/large/snorlax.jpg" style="width: 150px;">
+        <p><em>"Usa este método cuando las restricciones sean complejas."</em></p>
+    </div>
+
+    <section class="config-panel">
+        <div class="input-group">
+            <label>Objetivo:</label>
+            <select id="obj-type">
+                <option value="min">Minimizar</option> <option value="max">Maximizar</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label>Variables (n):</label>
+            <input type="number" id="num-vars" min="2" max="10" value="2">
+        </div>
+        <div class="input-group">
+            <label>Restricciones (m):</label>
+            <input type="number" id="num-cons" min="1" max="10" value="2">
+        </div>
+        <button class="btn-poke" onclick="generarMatriz()">¡Despertar Snorlax!</button>
+    </section>
+
+    <div id="model-area" style="display:none;">
+        <h3>Función Objetivo (Z)</h3>
+        <div id="z-function" class="matrix-row"></div>
+
+        <h3>Sujeto a (Restricciones):</h3>
+        <div id="matrix-container"></div>
+        
+        <button class="btn-poke btn-solve" style="background-color: #306567;" onclick="iniciarCalculo('mgrande')">¡Calcular Ruta!</button>
+    </div>
+
+    <div id="feedback" class="feedback-box"></div>
+</div>
+
+<script src="js/logic.js"></script>
+</body>
+</html>

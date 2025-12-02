@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Simplex Revisado - Poké-Optimizador</title>
+    <link rel="stylesheet" href="css/pokemon.css">
+</head>
+<body>
+
+<header class="poketop" style="background-color: #6a0dad;"> <a href="index.html" style="color:white; text-decoration:none; float:left; font-size:20px;">&#8592; Menú</a>
+    <h1>Simplex Revisado</h1>
+    <p class="sub">Enfoque Matricial: Multiplicadores &pi; y Base Inversa B⁻¹</p>
+</header>
+
+<div class="pokedex-screen">
+    <div style="text-align: center; margin-bottom: 20px;">
+        <img src="https://img.pokemondb.net/artwork/large/mewtwo.jpg" style="width: 150px;">
+        <p><em>"Solo calculamos lo estrictamente necesario. Eficiencia pura."</em></p>
+    </div>
+
+    <section class="config-panel">
+        <div class="input-group">
+            <label>Objetivo:</label>
+            <select id="obj-type">
+                <option value="max">Maximizar</option>
+                <option value="min">Minimizar</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label>Variables (n):</label>
+            <input type="number" id="num-vars" min="2" max="10" value="2">
+        </div>
+        <div class="input-group">
+            <label>Restricciones (m):</label>
+            <input type="number" id="num-cons" min="1" max="10" value="2">
+        </div>
+        <button class="btn-poke" onclick="generarMatriz()">¡Análisis Psíquico!</button>
+    </section>
+
+    <div id="model-area" style="display:none;">
+        <h3>Función Objetivo (Z)</h3>
+        <div id="z-function" class="matrix-row"></div>
+
+        <h3>Sujeto a:</h3>
+        <div id="matrix-container"></div>
+
+        <button class="btn-poke btn-solve" style="background-color: #6a0dad;" onclick="iniciarCalculo('revisado')">¡Ejecutar Matriz!</button>
+    </div>
+
+    <div id="feedback" class="feedback-box"></div>
+</div>
+
+<script src="js/logic.js"></script>
+</body>
+</html>

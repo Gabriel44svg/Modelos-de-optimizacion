@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Método Simplex - Poké-Optimizador</title>
+    <link rel="stylesheet" href="css/pokemon.css">
+</head>
+<body>
+
+<header class="poketop">
+    <a href="index.html" style="color:white; text-decoration:none; float:left; font-size:20px;">&#8592; Menú</a>
+    <h1>Método Simplex Estándar</h1>
+    <p class="sub">Calculadora de Maximización (Restricciones &le;)</p>
+</header>
+
+<div class="pokedex-screen">
+    <section class="config-panel">
+        <div class="input-group">
+            <label>Objetivo:</label>
+            <select id="obj-type">
+                <option value="max">Maximizar</option>
+                </select>
+        </div>
+        <div class="input-group">
+            <label>Variables (n):</label>
+            <input type="number" id="num-vars" min="2" max="10" value="2">
+        </div>
+        <div class="input-group">
+            <label>Restricciones (m):</label>
+            <input type="number" id="num-cons" min="1" max="10" value="2">
+        </div>
+        <button class="btn-poke" onclick="generarMatriz()">¡Generar Modelo!</button>
+    </section>
+
+    <div id="model-area" style="display:none;">
+        <h3>Función Objetivo (Z)</h3>
+        <div id="z-function" class="matrix-row"></div>
+
+        <h3>Sujeto a (Restricciones):</h3>
+        <div id="matrix-container"></div>
+
+        <button class="btn-poke btn-solve" onclick="iniciarCalculo('simplex')">¡Resolver Batalla!</button>
+    </div>
+
+    <div id="feedback" class="feedback-box"></div>
+</div>
+
+<script src="js/logic.js"></script>
+</body>
+</html>

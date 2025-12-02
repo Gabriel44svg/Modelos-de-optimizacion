@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dos Fases - Poké-Optimizador</title>
+    <link rel="stylesheet" href="css/pokemon.css">
+</head>
+<body>
+
+<header class="poketop" style="background-color: #A040A0;"> <a href="index.html" style="color:white; text-decoration:none; float:left; font-size:20px;">&#8592; Menú</a>
+    <h1>Método de las Dos Fases</h1>
+    <p class="sub">Fase 1: Búsqueda de Factibilidad | Fase 2: Optimización</p>
+</header>
+
+<div class="pokedex-screen">
+    <div style="text-align: center; margin-bottom: 20px;">
+        <img src="https://img.pokemondb.net/artwork/large/eevee.jpg" style="width: 150px;">
+        <p><em>"Primero encontramos el camino (Fase 1), luego corremos (Fase 2)."</em></p>
+    </div>
+
+    <section class="config-panel">
+        <div class="input-group">
+            <label>Objetivo (Fase 2):</label>
+            <select id="obj-type">
+                <option value="min">Minimizar</option>
+                <option value="max">Maximizar</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label>Variables (n):</label>
+            <input type="number" id="num-vars" min="2" max="10" value="2">
+        </div>
+        <div class="input-group">
+            <label>Restricciones (m):</label>
+            <input type="number" id="num-cons" min="1" max="10" value="2">
+        </div>
+        <button class="btn-poke" onclick="generarMatriz()">¡Preparar Evolución!</button>
+    </section>
+
+    <div id="model-area" style="display:none;">
+        <h3>Función Objetivo Original (Z)</h3>
+        <div id="z-function" class="matrix-row"></div>
+
+        <h3>Sujeto a:</h3>
+        <div id="matrix-container"></div>
+
+        <button class="btn-poke btn-solve" style="background-color: #A040A0;" onclick="iniciarCalculo('dosfases')">¡Iniciar Dos Fases!</button>
+    </div>
+
+    <div id="feedback" class="feedback-box"></div>
+</div>
+
+<script src="js/logic.js"></script>
+</body>
+</html>
