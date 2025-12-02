@@ -3,7 +3,7 @@ from flask_cors import CORS
 from poke_simplex import PokeSimplex, PokeTwoPhase, PokeAlgebraic, PokeRevisedSimplex  # <--- Importar ambos motores
 
 # Configuración para servir archivos desde la carpeta raíz
-app = Flask(__name__, template_folder='.', static_folder='.')
+app = Flask(__name__, template_folder='.')
 
 # Habilitar CORS para permitir peticiones desde Live Server (VSCode)
 CORS(app)
