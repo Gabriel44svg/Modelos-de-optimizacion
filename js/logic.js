@@ -1,7 +1,6 @@
 // Lógica del Poké-Optimizador - Validación Estricta
 
 function generarMatriz() {
-    // ... (El código de generarMatriz se queda IGUAL que antes) ...
     const numVars = parseInt(document.getElementById('num-vars').value);
     const numCons = parseInt(document.getElementById('num-cons').value);
     const modelArea = document.getElementById('model-area');
@@ -85,8 +84,12 @@ async function iniciarCalculo(metodo) {
     }
 
     // Enviar al Backend
+    const isLiveServer = window.location.port === '5500';
+    const baseUrl = isLiveServer ? 'http://127.0.0.1:5000' : '';
+
     try {
-        const response = await fetch('http://127.0.0.1:5000/api/solve_simplex', {
+        // Enviar al Backend con URL dinámica
+        const response = await fetch(baseUrl + '/api/solve_simplex', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -99,11 +102,12 @@ async function iniciarCalculo(metodo) {
             })
         });
 
+
         const result = await response.json();
 
         if (result.success) {
 
-            // 🔥 NUEVA DETECCIÓN DE TIPOS DE RESPUESTA
+            //  NUEVA DETECCIÓN DE TIPOS DE RESPUESTA
             if (result.type === 'algebraic') {
                 renderizarAlgebraico(result.steps);
 
